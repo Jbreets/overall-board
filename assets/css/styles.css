@@ -1,0 +1,175 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+/* @font-face { */
+	/* font-family: 'CustomFont'; */
+	/* src: url('../fonts/Poppins-Regular.woff2') format('woff2'), */
+		 /* url('../fonts/Poppins-Regular.woff') format('woff'), */
+		 /* url('../fonts/Poppins-Regular.ttf') format('truetype'); */
+	/* font-weight: 500; */
+	/* font-style: normal; */
+/* } */
+
+/* @font-face { */
+	/* font-family: 'GeoFont'; */
+	/* src: url('.fonts/geo_bold.otf') format('otf'), */
+		 /* url('.fonts/geo_semi_bold.otf') format('otf'), */
+		 /* url('.fonts/geo_wide_bold.otf') format('otf'); */
+	/* font-weight: 500; */
+	/* font-style: normal; */
+/* } */
+@font-face{
+	font-family: geo-wide-bold;
+	src: url('../fonts/geo_wide_bold.otf');
+	font-display: fallback;
+}
+
+@font-face {
+	font-family: Poppins;
+	src: url('../fonts/Poppins-Regular.woff2') format('woff2');
+	font-display: fallback;
+}
+
+body, html {
+	/* height: 100vh; */
+	/* font-family: 'GeoFont', sans-serif; */
+    font-family: geo-wide-bold;
+    height: 80vh;
+}
+
+.header {
+    font-family: Poppins;
+    text-align: center;
+	/* font-weight: bold; */
+	font-size: 2em;
+}
+footer {
+	background-color: #f3f3f3;
+}
+.row {
+	--bs-gutter-x: 0rem;
+	background-color: #f3f3f3;
+	padding: 22px;
+}
+.row a  {
+	margin: auto;
+	height: auto;
+	width: 200px;
+	
+}
+.charity-total-container {
+    display: flex;
+    margin: 0 auto;
+    height: -webkit-fill-available;;
+    flex-direction: column;
+    /* border: solid 2px black; */
+    padding: 0px, 40px, 40px, 40px ;
+    align-items: center;
+    /* justify-content: center; */
+}
+.data-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 15px;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.charity-total-container div {
+    font-weight: bold;
+}
+.overall-total {
+    /* font-size: 5rem !important; */
+    padding: 20px;
+    margin-bottom: 40px;
+    font-size: 14rem !important; 
+}
+.overall-data {
+    display: flex;
+    flex-direction: column;
+}
+.overall-data p {
+    /* border: solid 2px black; */
+    text-align: center;
+    margin: auto;
+    font-size: 5rem;
+    
+}
+
+.multiple-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+.small-headers {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.small-totals p {
+    font-size: 5rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 1080px) {
+
+    .overall-total {
+        font-size: 5rem;
+    }
+
+    .overall-data p {
+        /* border: solid 2px black; */
+        text-align: center;
+        margin: auto;
+        font-size: 3rem !important;
+    }
+    .small-headers {
+        font-size: 2rem;
+        text-align: center;
+    }
+    .small-totals p {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+}
+
+/* No fucking clue as to why this isn't working */
+@media screen and (max-width: 768px) {
+    .multiple-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }   
+    .small-headers {
+        margin: 22px;
+    }
+    .data-container {
+        margin: 0px;
+    }
+}
