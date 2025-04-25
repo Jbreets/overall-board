@@ -131,33 +131,44 @@ countUpOrDown(parseFloat(prev_signups_24), parseFloat(curr_signups_24), signups_
 // On-the-Hour Page Refresh
 // ==========================
 
-function refreshAtNextHour() {
-  const now = new Date();
-  const nextHour = new Date();
+// function refreshAtNextHour() {
+//   const now = new Date();
+//   const nextHour = new Date();
+// 
+//   nextHour.setHours(now.getHours() + 1);
+//   nextHour.setMinutes(0);
+//   nextHour.setSeconds(0);
+//   nextHour.setMilliseconds(0);
+// 
+//   const timeUntilNextHour = nextHour - now;
+// 
+//   console.log(timeUntilNextHour)
+// 
+//   console.log(`⏰ Refreshing in ${Math.round(timeUntilNextHour / 1000)} seconds`);
+// 
+//   setTimeout(() => {
+//     location.reload();
+//   }, timeUntilNextHour);
+// }
+// refreshAtNextHour();
 
-  nextHour.setHours(now.getHours() + 1);
-  nextHour.setMinutes(0);
-  nextHour.setSeconds(0);
-  nextHour.setMilliseconds(0);
+// ==========================
+// Time Specifc Page Refresh
+// ==========================
+function refreshAtSpecificTime(targetHour = 10, targetMinute = 0) {
+  setInterval(() => {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
 
-  const timeUntilNextHour = nextHour - now;
-
-  console.log(timeUntilNextHour)
-
-  console.log(`⏰ Refreshing in ${Math.round(timeUntilNextHour / 1000)} seconds`);
-
-  setTimeout(() => {
-    location.reload();
-
-    // Repeat every hour afterward
-    // setInterval(() => {
-    //   location.reload();
-    // }, 60 * 60 * 1000);
-
-  }, timeUntilNextHour);
+    if (currentHour === targetHour && currentMinute === targetMinute) {
+      console.log("🎯 10:00 AM reached – refreshing now.");
+      location.reload();
+    }
+  }, 60000); // Check every minute
 }
 
-refreshAtNextHour();
+
 
 
 // ==========================
