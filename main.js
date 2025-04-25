@@ -31,7 +31,7 @@ let curr_signups_24 = document.getElementById('curr_signups_24').innerHTML;
 let prev_signups_24 = document.getElementById('prev_signups_24').innerHTML;
 
 // Remove whitespace and commas
-[curr_total, prev_total, daily_Curr_Total, daily_Prev_Total] = 
+[curr_total, prev_total, daily_Curr_Total, daily_Prev_Total] =
   [curr_total, prev_total, daily_Curr_Total, daily_Prev_Total].map(val => val.replace(/\s|,/g, ''));
 
 
@@ -92,7 +92,6 @@ function countUpOrDown(startValue, endValue, element, currency = '') {
     }, 50);
 
   } else {
-    // Handles edge case: starts at 0 if equal
     startValue = 0;
     currentValue = 0;
     const step = (endValue - startValue) / (duration / 50);
@@ -109,7 +108,7 @@ function countUpOrDown(startValue, endValue, element, currency = '') {
 
 
 // ==========================
-// Trigger Confetti if Goal Met
+// Goal Check for Confetti
 // ==========================
 
 if (curr_total >= 40000000 && curr_total < 40020000) {
@@ -118,7 +117,7 @@ if (curr_total >= 40000000 && curr_total < 40020000) {
 
 
 // ==========================
-// Animate Initial Values
+// Animate Initial Numbers
 // ==========================
 
 countUpOrDown(parseFloat(daily_Prev_Total), parseFloat(daily_Curr_Total), dailyOverall, '£');
@@ -129,34 +128,40 @@ countUpOrDown(parseFloat(prev_signups_24), parseFloat(curr_signups_24), signups_
 
 
 // ==========================
-// Refresh Page at 10:00 AM
+// On-the-Hour Page Refresh
 // ==========================
 
-function checkRefreshTime() {
+function refreshAtNextHour() {
   const now = new Date();
-  const hour = now.getHours();
-  const minute = now.getMinutes();
+  const nextHour = new Date();
 
-  console.log(now)
-  console.log(hour)
-  console.log(minute)
+  nextHour.setHours(now.getHours() + 1);
+  nextHour.setMinutes(0);
+  nextHour.setSeconds(0);
+  nextHour.setMilliseconds(0);
 
-  if (hour === 10 && minute === 30) {
-    // console.log("Refreshing at 10:00 AM");
+  const timeUntilNextHour = nextHour - now;
+
+  console.log(timeUntilNextHour)
+
+  console.log(`⏰ Refreshing in ${Math.round(timeUntilNextHour / 1000)} seconds`);
+
+  setTimeout(() => {
     location.reload();
-  }
+
+    // Repeat every hour afterward
+    // setInterval(() => {
+    //   location.reload();
+    // }, 60 * 60 * 1000);
+
+  }, timeUntilNextHour);
 }
 
-// Check every minute
-setInterval(checkRefreshTime, 60000);
-
-// setInterval(() => {
-  // console.log("⏰ 60 seconds have passed...");
-// }, 60000);
+refreshAtNextHour();
 
 
 // ==========================
-// AJAX Utility (for future expansion)
+// AJAX Data Fetching (Optional)
 // ==========================
 
 function event_check(testData) {
@@ -170,5 +175,4 @@ function event_check(testData) {
   xhttp.send();
 }
 
-// Example usage:
-// setTimeout(() => event_check("update function"), 4000);
+// Example: event_check("update function");
